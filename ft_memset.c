@@ -1,9 +1,9 @@
-void	*ft_memset(void *dest, int c, size_t len)
+void	*ft_memset(void *dst, int c, size_t len)
 {
 	unsigned char	*p;
 
-	p = *dest;
+	p = *dst;
 	while (len-- > 0)
 		*p++ = c;
-	return dest;
+	return (dst);
 }
