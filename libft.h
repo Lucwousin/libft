@@ -7,5 +7,6 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
+void	*ft_memset(void *dest, int c, size_t len);
 
 #endif /* LIBFT_H */
