@@ -1,9 +1,13 @@
+#include "libft.h"
+
 void	*ft_memcpy(void *dst, const void *src, size_t len)
 {
-	char	*ptr;
+	char		*dp;
+	const char	*sp;
 
-	ptr = dst;
+	dp = dst;
+	sp = src;
 	while (len-- > 0)
-		*ptr++ = *src++;
+		*dp++ = *sp++;
 	return (dst);
 }
