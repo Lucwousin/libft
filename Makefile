@@ -16,6 +16,7 @@ SRCS = ft_bzero.c\
 	   ft_strlen.c\
 	   ft_strncmp.c\
 	   ft_strnstr.c\
+	   ft_strtrim.c\
 	   ft_tolower.c\
 	   ft_toupper.c
 
