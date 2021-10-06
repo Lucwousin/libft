@@ -1,4 +1,5 @@
-SRCS = ft_bzero.c\
+SRCS = ft_atoi.c\
+	   ft_bzero.c\
 	   ft_isalnum.c\
 	   ft_isalpha.c\
 	   ft_isascii.c\
@@ -28,17 +29,23 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-$(NAME):
-	$(CC) $(FLAGS) $(SRCS) -c
-	ar -r $(NAME) $(OBJS)
+%.o : %.c libft.h
+	@$(CC) $(FLAGS) -c $<
+	@echo "Compiling: $<"
+
+$(NAME): $(OBJS)
+	@ar -cr $(NAME) $(OBJS)
+	@echo "Done creating archive"
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
+	@echo "Done cleaning objects"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Done cleaning archive"
 
 re: fclean all
 
