@@ -26,5 +26,7 @@ char	*ft_strnstr(const char *str, const char *find, size_t n);
 char	*ft_strtrim(const char *str, const char *set);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *str);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 #endif /* LIBFT_H */
