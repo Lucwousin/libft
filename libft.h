@@ -29,5 +29,7 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *str);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
+char	**ft_split(const char *str, char c);
+char	*ft_itoa(int n);
 
 #endif /* LIBFT_H */
