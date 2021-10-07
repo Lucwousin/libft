@@ -31,6 +31,7 @@ SRCS = ft_atoi.c\
 	   ft_toupper.c
 
 SRCS_B = ft_lstadd.c\
+		 ft_lstdel.c\
 		 ft_lstlast.c\
 		 ft_lstnew.c\
 		 ft_lstsize.c
