@@ -30,9 +30,13 @@ SRCS = ft_atoi.c\
 	   ft_tolower.c\
 	   ft_toupper.c
 
+SRCS_B = ft_lstnew.c
+
 NAME = libft.a
 
 OBJS = $(SRCS:.c=.o)
+
+OBJS_B = $(SRCS_B:.c=.o)
 
 CC = gcc
 
@@ -49,7 +53,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(OBJS_B)
 	@echo "Done cleaning objects"
 
 fclean: clean
@@ -57,6 +61,11 @@ fclean: clean
 	@echo "Done cleaning archive"
 
 re: fclean all
+
+bonus: $(OBJS_B)
+	@ar -cr $(NAME) $(OBJS_B)
+	@echo "Done adding bonus objects to archive"
+
 
 test: all
 	gcc -o ../libft_test/test ../libft_test/test.c $(NAME)
