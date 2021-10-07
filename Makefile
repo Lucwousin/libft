@@ -30,7 +30,9 @@ SRCS = ft_atoi.c\
 	   ft_tolower.c\
 	   ft_toupper.c
 
-SRCS_B = ft_lstnew.c
+SRCS_B = ft_lstadd.c\
+		 ft_lstlast.c\
+		 ft_lstnew.c
 
 NAME = libft.a
 
