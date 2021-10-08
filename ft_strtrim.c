@@ -16,6 +16,8 @@ char	*ft_strtrim(char const *str, char const *set)
 
 	while (contains(set, *str))
 		++str;
+	if (!*str)
+		return (ft_strdup(""));
 	end = ft_strchr(str, 0) - 1;
 	while (contains(set, *end))
 		--end;
