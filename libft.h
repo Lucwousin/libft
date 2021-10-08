@@ -42,8 +42,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 // Memory functions
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-void	*ft_memset(void *dst, int c, size_t len);
 void	ft_bzero(void *dst, size_t len);
+void	*ft_memset(void *dst, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
