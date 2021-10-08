@@ -22,6 +22,8 @@ static size_t	count_words(const char *str, char c)
 	size_t	n;
 	char	*p;
 
+	if (c == '\0')
+		return (*str != '\0');		
 	n = 0;
 	p = (char *) str;
 	if (*p && *p != c)
