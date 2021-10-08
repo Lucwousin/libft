@@ -20,8 +20,9 @@ static size_t	find_size(long n)
 
 static void	itoa_rec(char *str, long n, size_t len)
 {
-	if (len-- == 0 || n == 0)
+	if (len == 0 || n == 0)
 		return ;
+	--len;
 	str[len] = (n % 10) + '0';
 	itoa_rec(str, n / 10, len);
 }

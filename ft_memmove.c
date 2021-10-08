@@ -11,8 +11,13 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	{
 		s = src + (len - 1);
 		d = dst + (len - 1);
-		while (len-- > 0)
-			*d-- = *s--;
+		while (len > 0)
+		{
+			*d = *s;
+			--d;
+			--s;
+			--len;
+		}
 	}
 	return (dst);
 }

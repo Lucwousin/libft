@@ -3,8 +3,11 @@
 static int	contains(const char *set, char val)
 {
 	while (*set)
-		if (*set++ == val)
+	{
+		if (*set == val)
 			return (1);
+		++set;
+	}
 	return (0);
 }
 

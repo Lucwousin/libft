@@ -14,7 +14,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstlen)
 		return (len_s + dstlen);
 	off = len_d;
 	while (*src && dstlen - off - 1 > 0)
-		dst[off++] = *src++;
+	{
+		dst[off] = *src;
+		++off;
+		++src;
+	}
 	dst[off] = '\0';
 	return (len_s + len_d);
 }

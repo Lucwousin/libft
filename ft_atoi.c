@@ -3,8 +3,11 @@
 static int	contains(const char *set, char c)
 {
 	while (*set)
-		if (*set++ == c)
+	{
+		if (*set == c)
 			return (1);
+		++set;
+	}
 	return (0);
 }
 
@@ -18,8 +21,11 @@ int	ft_atoi(const char *str)
 	while (contains("\t\n\v\f\r ", *str))
 		++str;
 	if (*str == '+' || *str == '-')
-		if (*str++ == '-')
+	{
+		if (*str == '-')
 			sign = -1;
+		++str;
+	}
 	while (ft_isdigit(*str))
 	{
 		val *= 10;

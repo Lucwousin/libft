@@ -76,8 +76,3 @@ re: fclean all
 bonus: $(OBJS_B)
 	@ar -cr $(NAME) $(OBJS_B)
 	@echo "Done adding bonus objects to archive"
-
-
-test: all
-	gcc -o ../libft_test/test ../libft_test/test.c $(NAME)
-	../libft_test/test

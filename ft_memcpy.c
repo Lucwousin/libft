@@ -9,7 +9,12 @@ void	*ft_memcpy(void *dst, const void *src, size_t len)
 		return (NULL);
 	dp = dst;
 	sp = src;
-	while (len-- > 0)
-		*dp++ = *sp++;
+	while (len > 0)
+	{
+		*dp = *sp;
+		++dp;
+		++sp;
+		--len;
+	}
 	return (dst);
 }
