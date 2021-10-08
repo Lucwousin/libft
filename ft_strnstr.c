@@ -15,11 +15,11 @@ char	*ft_strnstr(const char *str, const char *find, size_t n)
 		found = ft_memchr(str + off, find[0], n - off);
 		if (!found)
 			return (NULL);
+		off = found - str + 1;
+		if (off + len_f > n)
+			return (NULL);
 		if (ft_strncmp(found, find, len_f) == 0)
 			return (found);
-		off = found - str + 1;
-		if (off > n)
-			return (NULL);
 		found = NULL;
 	}
 }
