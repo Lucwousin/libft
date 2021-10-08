@@ -1,4 +1,7 @@
 int	ft_tolower(int c)
 {
-	return (c + 'a' - 'A');
+	if (c < 'A' || c > 'Z')
+		return (c);
+	else
+		return (c + 'a' - 'A');
 }
