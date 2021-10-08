@@ -23,7 +23,7 @@ static size_t	count_words(const char *str, char c)
 	char	*p;
 
 	if (c == '\0')
-		return (*str != '\0');		
+		return (*str != '\0');
 	n = 0;
 	p = (char *) str;
 	if (*p && *p != c)
@@ -65,6 +65,8 @@ char	**ft_split(const char *str, char c)
 	char	**strs;
 	size_t	n_words;
 
+	if (!str)
+		return (NULL);
 	n_words = count_words(str, c);
 	strs = malloc((n_words + 1) * sizeof(char *));
 	if (!strs)

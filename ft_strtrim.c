@@ -17,6 +17,8 @@ char	*ft_strtrim(char const *str, char const *set)
 	const char	*end;
 	size_t		len;
 
+	if (!str)
+		return (NULL);
 	while (contains(set, *str))
 		++str;
 	if (!*str)
