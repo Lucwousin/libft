@@ -1,22 +1,6 @@
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen(s));
-}
-
-void	ft_putendl_fd(char *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
-
-extern void	putnbr_rec(long n, int fd)
+static void	putnbr_rec(long n, int fd)
 {
 	if (n == 0)
 		return ;

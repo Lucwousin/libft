@@ -24,6 +24,8 @@ static size_t	count_words(const char *str, char c)
 
 	n = 0;
 	p = (char *) str;
+	if (*p && *p != c)
+		++n;
 	while (1)
 	{
 		p = find_next_word(p, c);
@@ -36,6 +38,7 @@ static size_t	count_words(const char *str, char c)
 static void	do_splitting(const char *str, char c, char **strs, size_t n_words)
 {
 	char	*word;
+	char	*wordend;
 	int		wl;
 	size_t	i;
 
@@ -43,9 +46,14 @@ static void	do_splitting(const char *str, char c, char **strs, size_t n_words)
 	word = (char *) str;
 	while (i < n_words)
 	{
-		word = find_next_word(word, c);
-		wl = ft_strchr(word, c) - word;
+		while (*word == c)
+			++word;
+		wordend = ft_strchr(word, c);
+		if (!wordend)
+			wordend = ft_strchr(word, 0);
+		wl = wordend - word;
 		strs[i] = ft_substr(word, 0, wl);
+		word = wordend;
 		++i;
 	}
 }
