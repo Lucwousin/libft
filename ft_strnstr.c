@@ -6,8 +6,10 @@ char	*ft_strnstr(const char *str, const char *find, size_t n)
 	size_t	off;
 	char	*found;
 
+	if (*str == '\0')
+		return (NULL);
 	len_f = ft_strlen(find);
-	if (len_f == 0)
+	if (len_f == 0 || str == find)
 		return ((char *) str);
 	off = 0;
 	while (1)
