@@ -54,8 +54,8 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
 %.o : %.c
-	@$(CC) $(FLAGS) -c $<
 	@echo "Compiling: $<"
+	@$(CC) $(FLAGS) -c $<
 
 $(NAME): $(OBJS)
 	@ar -cr $(NAME) $(OBJS)
