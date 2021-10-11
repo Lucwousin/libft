@@ -37,7 +37,18 @@ static size_t	count_words(const char *str, char c)
 	}
 }
 
-static void	do_splitting(const char *str, char c, char **strs, size_t n_words)
+static void cleanup(char ***strs, int n)
+{
+	while (n)
+	{
+		--n;
+		free(*strs[n]);
+	}
+	free(*strs);
+	*strs = NULL;
+}
+
+static void	do_splitting(const char *str, char c, char ***strs, size_t n_words)
 {
 	char	*word;
 	char	*wordend;
@@ -54,7 +65,12 @@ static void	do_splitting(const char *str, char c, char **strs, size_t n_words)
 		if (!wordend)
 			wordend = ft_strchr(word, 0);
 		wl = wordend - word;
-		strs[i] = ft_substr(word, 0, wl);
+		(*strs)[i] = ft_substr(word, 0, wl);
+		if ((*strs)[i] == NULL)
+        {
+		    cleanup(strs, i);
+		    return ;
+        }
 		word = wordend;
 		++i;
 	}
@@ -72,6 +88,6 @@ char	**ft_split(const char *str, char c)
 	if (!strs)
 		return (NULL);
 	strs[n_words] = NULL;
-	do_splitting(str, c, strs, n_words);
+	do_splitting(str, c, &strs, n_words);
 	return (strs);
 }
