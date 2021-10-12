@@ -1,4 +1,4 @@
-#include "libft_bonus.h"
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*map)(void *), void (*del)(void *))
 {
