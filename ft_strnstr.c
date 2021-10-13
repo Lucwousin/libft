@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *str, const char *find, size_t n)
 		if (!found)
 			return (NULL);
 		off = found - str + 1;
-		if (off + len_f > n)
+		if (off > n || off + len_f > n)
 			return (NULL);
 		if (ft_strncmp(found, find, len_f) == 0)
 			return (found);
