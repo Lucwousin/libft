@@ -2,23 +2,23 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ret;
-	size_t	slen;
-	size_t	n;
+	char	*string;
+	size_t	startpos;
+	size_t	srclen;
 
 	if (!s)
 		return (NULL);
-	slen = ft_strlen(s);
-	if (len == 0 || start > slen)
+	srclen = ft_strlen(s);
+	if (start > srclen || len == 0)
 		return (ft_strdup(""));
-	ret = malloc((len + 1) * sizeof(char));
-	if (!ret)
+	string = malloc((ft_min(srclen - start, len) + 1) * sizeof(char));
+	if (string == NULL)
 		return (NULL);
-	if (start + len > slen)
-		n = slen - start;
+	if (start + len > srclen)
+		startpos = srclen - start;
 	else
-		n = len;
-	ft_memcpy(ret, s + start, n);
-	ret[n] = '\0';
-	return (ret);
+		startpos = len;
+	ft_memcpy(string, s + start, startpos);
+	string[startpos] = '\0';
+	return (string);
 }
