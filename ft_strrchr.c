@@ -9,7 +9,7 @@ char	*ft_strrchr(const char *s, int c)
 	last = NULL;
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char) c)
 			last = s;
 		++s;
 	}
