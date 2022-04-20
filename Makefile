@@ -3,10 +3,10 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: lucas <lucas@student.codam.nl>               +#+                      #
+#    By: lsinke <lsinke@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/04/20 12:19:17 by lucas         #+#    #+#                  #
-#    Updated: 2022/04/20 12:19:17 by lucas         ########   odam.nl          #
+#    Created: 2022/04/20 12:19:17 by lsinke        #+#    #+#                  #
+#    Updated: 2022/04/20 12:19:17 by lsinke        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ SRCS = ft_atoi.c\
 	   ft_strtrim.c\
 	   ft_substr.c\
 	   ft_tolower.c\
-	   ft_toupper.c
+	   ft_toupper.c\
+	   get_next_line.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
@@ -69,7 +70,7 @@ OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling: $<"
 	@$(CC) $(CFLAGS) -c -o $@ $<
