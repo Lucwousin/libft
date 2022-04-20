@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_lstdelelem.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lucas <lucas@student.codam.nl>               +#+                     */
+/*   By: lsinke <lsinke@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/20 14:11:45 by lucas         #+#    #+#                 */
-/*   Updated: 2022/04/20 14:11:45 by lucas         ########   odam.nl         */
+/*   Created: 2022/04/20 14:11:45 by lsinke        #+#    #+#                 */
+/*   Updated: 2022/04/20 14:11:45 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/libft.h"
