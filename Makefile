@@ -14,6 +14,7 @@ NAME = libft.a
 
 OBJ_DIR = obj/
 SRC_DIR = src/
+INC_DIR = include/
 
 SRCS = ft_atoi.c\
 	   ft_bzero.c\
@@ -67,7 +68,7 @@ OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c libft.h
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling: $<"
 	@$(CC) $(CFLAGS) -c -o $@ $<
