@@ -7,6 +7,15 @@ SRCS = ft_atoi.c\
 	   ft_isdigit.c\
 	   ft_isprint.c\
 	   ft_itoa.c\
+	   ft_lstadd_back.c\
+	   ft_lstadd_front.c\
+	   ft_lstclear.c\
+	   ft_lstdelone.c\
+	   ft_lstiter.c\
+	   ft_lstlast.c\
+	   ft_lstmap.c\
+	   ft_lstnew.c\
+	   ft_lstsize.c\
 	   ft_memchr.c\
 	   ft_memcmp.c\
 	   ft_memcpy.c\
@@ -35,23 +44,10 @@ SRCS = ft_atoi.c\
 	   ft_tolower.c\
 	   ft_toupper.c
 
-SRCS_B = ft_lstadd_back.c\
-		 ft_lstadd_front.c\
-		 ft_lstclear.c\
-		 ft_lstdelone.c\
-		 ft_lstiter.c\
-		 ft_lstlast.c\
-		 ft_lstmap.c\
-		 ft_lstnew.c\
-		 ft_lstsize.c\
-		 $(SRCS)
-
 NAME = libft.a
 OBJS_DIR = objs/
 OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
-OBJS_B = $(SRCS_B:.c=.o)
-OBJS_B_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS_B))
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -77,6 +73,4 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJS_B_PREFIXED)
-	@ar -cr $(NAME) $(OBJS_B_PREFIXED)
-	@echo "Done adding bonus objects to archive"
+.PHONY: all clean fclean re
