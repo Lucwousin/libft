@@ -1,3 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: lucas <lucas@student.codam.nl>               +#+                      #
+#                                                    +#+                       #
+#    Created: 2022/04/20 12:19:17 by lucas         #+#    #+#                  #
+#    Updated: 2022/04/20 12:19:17 by lucas         ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libft.a
+
+OBJ_DIR = obj/
+SRC_DIR = src/
+
 SRCS = ft_atoi.c\
 	   ft_bzero.c\
 	   ft_calloc.c\
@@ -44,16 +61,14 @@ SRCS = ft_atoi.c\
 	   ft_tolower.c\
 	   ft_toupper.c
 
-NAME = libft.a
-OBJS_DIR = objs/
 OBJS = $(SRCS:.c=.o)
-OBJS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
+OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-$(OBJS_DIR)%.o : %.c libft.h
-	@mkdir -p $(OBJS_DIR)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c libft.h
+	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling: $<"
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
@@ -64,8 +79,8 @@ $(NAME): $(OBJS_PREFIXED)
 all: $(NAME)
 
 clean:
-	@rm -rf $(OBJS_DIR)
-	@echo "Done cleaning $(CURDIR)/$(OBJS_DIR)"
+	@rm -rf $(OBJ_DIR)
+	@echo "Done cleaning $(CURDIR)/$(OBJ_DIR)"
 
 fclean: clean
 	@rm -f $(NAME)
