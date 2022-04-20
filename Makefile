@@ -29,6 +29,7 @@ SRCS = ft_atoi.c\
 	   ft_lstadd_front.c\
 	   ft_lstclear.c\
 	   ft_lstdelone.c\
+	   ft_lstdelelem.c\
 	   ft_lstiter.c\
 	   ft_lstlast.c\
 	   ft_lstmap.c\
