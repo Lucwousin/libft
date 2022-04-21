@@ -70,10 +70,10 @@ OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiling: $<"
-	@$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -c -o $@ $<
 
 $(NAME): $(OBJS_PREFIXED)
 	@ar -cr $(NAME) $(OBJS_PREFIXED)

@@ -9,7 +9,7 @@
 /*   Updated: 2021/12/18 18:01:21 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
