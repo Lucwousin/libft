@@ -20,6 +20,7 @@ SRCS = ft_atoi.c\
 	   ft_bzero.c\
 	   ft_calloc.c\
 	   ft_free_mult.c\
+	   ft_hextoui.c\
 	   ft_isalnum.c\
 	   ft_isalpha.c\
 	   ft_isascii.c\
