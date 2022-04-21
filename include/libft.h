@@ -42,6 +42,8 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *str, const char *set);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	**ft_split(const char *str, char c);
+void	**ft_split_map(const char *s, char c,
+			void *(*map)(char *), void (*del)(void *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_strtoupper(char *s);
 void	ft_strtolower(char *s);
