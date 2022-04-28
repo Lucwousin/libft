@@ -69,6 +69,8 @@ void			ft_putnbr_fd(int n, int fd);
 int				ft_min(int a, int b);
 int				ft_max(int a, int b);
 int				ft_abs(int n);
+int				ft_interpolate_i(int a, int b, double p);
+double			ft_interpolate_d(double a, double b, double p);
 
 typedef struct s_list
 {
