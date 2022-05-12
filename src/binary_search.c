@@ -20,7 +20,7 @@ uint32_t	binary_search(int32_t *arr, int32_t val, uint32_t size)
 	uint32_t	idx;
 	uint32_t	l;
 	uint32_t	r;
-	
+
 	l = 0;
 	r = size - 1;
 	while (l <= r)
