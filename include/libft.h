@@ -90,4 +90,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 int				ft_lstsize(t_list *lst);
 
+uint32_t		binary_search(int32_t *arr, int32_t val, uint32_t size);
+void			quicksort(int32_t *arr, uint32_t low, uint32_t high);
+
 #endif /* LIBFT_H */

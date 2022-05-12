@@ -66,13 +66,15 @@ SRCS = ft_atoi.c\
 	   ft_substr.c\
 	   ft_tolower.c\
 	   ft_toupper.c\
-	   get_next_line.c
+	   get_next_line.c\
+	   binary_search.c\
+	   quicksort.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h
 	@mkdir -p $(OBJ_DIR)
