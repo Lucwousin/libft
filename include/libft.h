@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdint.h>
 # include <stdlib.h>
 
 // Character boolean functions
