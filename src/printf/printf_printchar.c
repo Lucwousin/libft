@@ -25,6 +25,5 @@ int32_t	printchar(char c, t_opts opts)
 
 int32_t	printpercent(t_opts opts)
 {
-	opts.minwidth = 0;
 	return (printchar('%', opts));
 }
