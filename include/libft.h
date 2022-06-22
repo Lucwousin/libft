@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdbool.h>
 # include <stdint.h>
 # include <stdlib.h>
 
@@ -49,6 +50,7 @@ void			**ft_split_map(const char *s, char c,
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 void			ft_strtoupper(char *s);
 void			ft_strtolower(char *s);
+bool			strcontains(const char *str, char c);
 
 // Memory functions
 int				ft_memcmp(const void *s1, const void *s2, size_t n);

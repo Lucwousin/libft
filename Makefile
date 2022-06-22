@@ -23,6 +23,7 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   str/ft_strlen.c				str/ft_strmod.c				str/ft_strnstr.c			str/ft_strtrim.c\
 	   str/ft_split_map.c			str/ft_strdup.c				str/ft_strjoin.c			str/ft_strlcpy.c\
 	   str/ft_strmapi.c				str/ft_strncmp.c			str/ft_strrchr.c			str/ft_substr.c\
+	   str/strcontains.c\
 	   lst/ft_lstadd_back.c			lst/ft_lstclear.c			lst/ft_lstdelone.c			lst/ft_lstlast.c\
 	   lst/ft_lstnew.c				lst/ft_lstadd_front.c		lst/ft_lstdelelem.c			lst/ft_lstiter.c\
 	   lst/ft_lstmap.c				lst/ft_lstsize.c\
