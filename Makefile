@@ -18,6 +18,7 @@ INC_DIR = include/
 
 SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c\
 	   mem/ft_memcmp.c				mem/ft_memcpy.c				mem/ft_memmove.c			mem/ft_memset.c\
+	   mem/ft_realloc.c\
 	   str/ft_split.c				str/ft_strchr.c				str/ft_striteri.c			str/ft_strlcat.c\
 	   str/ft_strlen.c				str/ft_strmod.c				str/ft_strnstr.c			str/ft_strtrim.c\
 	   str/ft_split_map.c			str/ft_strdup.c				str/ft_strjoin.c			str/ft_strlcpy.c\
