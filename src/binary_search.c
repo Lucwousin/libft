@@ -15,7 +15,7 @@
 /**
  * Find a value in a sorted array. The array HAS to contain the value
  */
-uint32_t	binary_search(int32_t *arr, int32_t val, uint32_t size)
+uint32_t	binary_search(const int32_t *arr, int32_t val, uint32_t size)
 {
 	uint32_t	idx;
 	uint32_t	l;

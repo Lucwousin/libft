@@ -9,6 +9,7 @@
 /*   Updated: 2022/04/20 14:11:45 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <libft.h>
 
 void	ft_lstdelelem(t_list **list, t_list *elem, void (*del)(void *))

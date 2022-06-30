@@ -9,6 +9,7 @@
 /*   Updated: 2021/12/18 18:01:21 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;

@@ -9,8 +9,10 @@
 /*   Updated: 2021/12/18 18:01:21 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <stdbool.h>
 # include <stdint.h>
 # include <stdlib.h>

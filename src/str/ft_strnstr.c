@@ -9,9 +9,10 @@
 /*   Updated: 2021/12/18 18:01:21 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <libft.h>
 
-int	try_find(const char *str, const char *find, size_t n)
+static int	try_find(const char *str, const char *find, size_t n)
 {
 	while (n != 0 && *find)
 	{

@@ -9,19 +9,21 @@
 /*   Updated: 2022/04/20 18:34:14 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <libft.h>
 
-static void	cleanup(void **trash, void (*del)(void *))
+static void	cleanup(void ***trash, void (*del)(void *))
 {
 	void	**t;
 
-	t = trash;
+	t = *trash;
 	while (*t)
 	{
 		del(*t);
 		++t;
 	}
-	free(trash);
+	free(*trash);
+	*trash = NULL;
 }
 
 static void	**do_map(char **strs, void *(*map)(char *), void (*del)(void *))
@@ -42,7 +44,7 @@ static void	**do_map(char **strs, void *(*map)(char *), void (*del)(void *))
 		ret[i] = map(strs[i]);
 		if (!ret[i])
 		{
-			cleanup(ret, del);
+			cleanup(&ret, del);
 			return (NULL);
 		}
 		++i;
@@ -60,6 +62,6 @@ void	**ft_split_map(const char *s, char c,
 	if (!strs)
 		return (NULL);
 	ret = do_map(strs, map, del);
-	cleanup((void **) strs, &free);
+	cleanup((void ***) &strs, &free);
 	return (ret);
 }

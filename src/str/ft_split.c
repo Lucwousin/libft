@@ -9,6 +9,7 @@
 /*   Updated: 2021/12/18 18:01:21 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <libft.h>
 
 /**
@@ -48,7 +49,7 @@ static size_t	count_words(const char *str, char c)
 	}
 }
 
-static void	cleanup(char ***strs, int n)
+static void	cleanup(char ***strs, size_t n)
 {
 	while (n)
 	{
@@ -63,7 +64,7 @@ static void	do_splitting(const char *str, char c, char ***strs, size_t n_words)
 {
 	char	*word;
 	char	*wordend;
-	int		wl;
+	size_t	wl;
 	size_t	i;
 
 	i = 0;
