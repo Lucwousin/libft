@@ -9,7 +9,7 @@
 /*   Updated: 2021/12/18 17:55:07 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf_internal.h"
+#include <ft_printf_internal.h>
 #include <unistd.h>
 
 int32_t	print_type(char c, t_opts options, va_list *args)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 #define BASE_CHARS "0123456789ABCDEF"
 
 int	indexof(const char *str, char c)

@@ -15,7 +15,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
-# include "libft.h"
+# include <libft.h>
 # include <stdlib.h>
 
 typedef struct s_content

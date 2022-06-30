@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include <get_next_line.h>
 #include <unistd.h>
 
 static t_list	*find_or_create_list(t_list **list, int fd)

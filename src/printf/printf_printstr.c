@@ -9,8 +9,8 @@
 /*   Updated: 2021/12/18 17:55:07 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-#include "ft_printf_internal.h"
+#include <libft.h>
+#include <ft_printf_internal.h>
 #include <unistd.h>
 
 int32_t	printstr(const char *str, t_opts opts)

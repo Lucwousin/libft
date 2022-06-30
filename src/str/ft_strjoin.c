@@ -9,7 +9,7 @@
 /*   Updated: 2021/12/18 18:01:21 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <libft.h>
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

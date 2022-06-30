@@ -9,7 +9,7 @@
 /*   Updated: 2022/04/20 18:34:14 by lsinke        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <libft.h>
 
 static void	cleanup(void **trash, void (*del)(void *))
 {
