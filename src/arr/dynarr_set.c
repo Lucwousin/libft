@@ -15,7 +15,7 @@
 
 bool	dynarr_set(t_dynarr *arr, size_t index, void *obj)
 {
-	if (arr == NULL || index < 0)
+	if (arr == NULL)
 		return (false);
 	if (index >= arr->arr_size)
 		if (dynarr_grow(arr, index + 1) == false)

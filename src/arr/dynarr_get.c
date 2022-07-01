@@ -14,7 +14,7 @@
 
 void	*dynarr_get(t_dynarr *arr, size_t index)
 {
-	if (arr == NULL || index < 0 || index >= arr->arr_idx)
+	if (arr == NULL || index >= arr->arr_idx)
 		return (NULL);
 	return (arr->arr + (index * arr->data_size));
 }
