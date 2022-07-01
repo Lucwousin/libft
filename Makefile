@@ -24,6 +24,8 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   str/ft_split_map.c			str/ft_strdup.c				str/ft_strjoin.c			str/ft_strlcpy.c\
 	   str/ft_strmapi.c				str/ft_strncmp.c			str/ft_strrchr.c			str/ft_substr.c\
 	   str/strcontains.c\
+	   arr/dynarr_create.c			arr/dynarr_delete.c			arr/dynarr_finalize.c		arr/dynarr_grow.c\
+	   arr/dynarr_foreach.c			arr/dynarr_add.c			arr/dynarr_get.c			arr/dynarr_set.c\
 	   lst/ft_lstadd_back.c			lst/ft_lstclear.c			lst/ft_lstdelone.c			lst/ft_lstlast.c\
 	   lst/ft_lstnew.c				lst/ft_lstadd_front.c		lst/ft_lstdelelem.c			lst/ft_lstiter.c\
 	   lst/ft_lstmap.c				lst/ft_lstsize.c\
@@ -45,7 +47,7 @@ OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h $(INC_DIR)dynarr.h
 	@mkdir -p $(@D)
 	@echo "Compiling: $<"
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c -o $@ $<
