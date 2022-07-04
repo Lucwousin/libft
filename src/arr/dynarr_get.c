@@ -19,7 +19,7 @@ void	*dynarr_get_u(t_dynarr *arr, size_t index)
 
 void	*dynarr_get(t_dynarr *arr, size_t index)
 {
-	if (arr == NULL || index >= arr->arr_idx)
+	if (arr == NULL || index >= arr->length)
 		return (NULL);
 	return (dynarr_get_u(arr, index));
 }

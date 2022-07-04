@@ -22,23 +22,23 @@
  * A dynamic (growable) array, usable for all types
  * 
  * arr is the internal array
- * elem_size is the size of the data type (sizeof <type>)
- * capacity is the size (in objects!) of the internal array
- * arr_idx is the next unused index of the internal array
+ * elem_size is the length of the data type (sizeof <type>)
+ * capacity is the length (in objects!) of the internal array
+ * length is the amount of objects currently in the array
  */
 typedef struct s_dynarr {
 	void			*arr;
 	const size_t	elem_size;
 	size_t			capacity;
-	size_t			arr_idx;
+	size_t			length;
 }	t_dynarr;
 
 /**
  * Create a new (growable) dynamic array
  * 
  * @param[out] ptr A pointer where the new dynamic array will be created
- * @param[in] init_size The initial size (in objects!) of the internal array
- * @param[in] data_size The size of the data type this array will be used for
+ * @param[in] init_size The initial length (in objects!) of the internal array
+ * @param[in] data_size The length of the data type this array will be used for
  * 
  * @return true if everything went as planned, false if an error occurred
  */
@@ -52,7 +52,7 @@ bool	dynarr_create(t_dynarr *ptr, size_t init_size, const size_t data_size);
 void	dynarr_delete(t_dynarr *arr);
 
 /**
- * "Finalize" this array. Shrinks the internal array to the minimal size
+ * "Finalize" this array. Shrinks the internal array to the minimal length
  * necessary for everything to fit
  * 
  * @param arr[in/out] the buffer to finalize
@@ -109,7 +109,7 @@ void	*dynarr_get_u(t_dynarr *arr, size_t index);
 
 /**
  * Store an object at a certain index in the array. Growing the array to that
- * size if necessary.
+ * length if necessary.
  * 
  * @param arr[in/out] the dynarr to store the object in 
  * @param index[in] the index where the object will be stored in the array
@@ -123,7 +123,7 @@ bool	dynarr_set(t_dynarr *arr, size_t index, void *obj);
  * Grow (or shrink) the internal array
  * 
  * @param arr[in/out] the dynarr to grow
- * @param new_size[in] the new size (in objects!) to grow the array to.
+ * @param new_size[in] the new length (in objects!) to grow the array to.
  * 
  * @return true if everything went as planned, false if an error occurred
  */

@@ -16,5 +16,5 @@ bool	dynarr_finalize(t_dynarr *arr)
 {
 	if (arr == NULL)
 		return (false);
-	return (dynarr_grow(arr, arr->arr_idx));
+	return (dynarr_grow(arr, arr->length));
 }

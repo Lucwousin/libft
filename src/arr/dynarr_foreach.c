@@ -19,6 +19,6 @@ void	dynarr_foreach(t_dynarr *arr, void (*f)(void *, void *), void *param)
 	if (arr == NULL || f == NULL)
 		return ;
 	index = 0;
-	while (index < arr->arr_idx)
+	while (index < arr->length)
 		f(dynarr_get(arr, index++), param);
 }
