@@ -28,7 +28,7 @@ bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
 	if (arr->arr_size - arr->arr_idx < count)
 		if (dynarr_grow(arr, calc_grow_size(arr, count)) == false)
 			return (false);
-	ft_memcpy(dynarr_get_u(arr, arr->arr_idx), objs, count * arr->data_size);
+	ft_memcpy(dynarr_get_u(arr, arr->arr_idx), objs, count * arr->elem_size);
 	arr->arr_idx += count;
 	return (true);
 }

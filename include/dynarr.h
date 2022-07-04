@@ -22,13 +22,13 @@
  * A dynamic (growable) array, usable for all types
  * 
  * arr is the internal array
- * data_size is the size of the data type (sizeof <type>)
+ * elem_size is the size of the data type (sizeof <type>)
  * arr_size is the size (in objects!) of the internal array
  * arr_idx is the next unused index of the internal array
  */
 typedef struct s_dynarr {
 	void			*arr;
-	const size_t	data_size;
+	const size_t	elem_size;
 	size_t			arr_size;
 	size_t			arr_idx;
 }	t_dynarr;

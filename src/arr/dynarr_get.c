@@ -14,7 +14,7 @@
 
 void	*dynarr_get_u(t_dynarr *arr, size_t index)
 {
-	return (arr->arr + (index * arr->data_size));
+	return (arr->arr + (index * arr->elem_size));
 }
 
 void	*dynarr_get(t_dynarr *arr, size_t index)
