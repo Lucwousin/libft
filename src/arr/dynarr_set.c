@@ -20,6 +20,6 @@ bool	dynarr_set(t_dynarr *arr, size_t index, void *obj)
 	if (index >= arr->arr_size)
 		if (dynarr_grow(arr, index + 1) == false)
 			return (false);
-	ft_memcpy(arr->arr + (index * arr->data_size), obj, arr->data_size);
+	ft_memcpy(dynarr_get_u(arr, index), obj, arr->data_size);
 	return (true);
 }
