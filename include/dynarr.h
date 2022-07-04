@@ -97,6 +97,17 @@ bool	dynarr_addone(t_dynarr *arr, void *obj);
 void	*dynarr_get(t_dynarr *arr, size_t index);
 
 /**
+ * Get a pointer to a certain index in the array. This function does not check
+ * if this is an valid index! Use with care!
+ *
+ * @param arr[in/out] the dynarr to get the object from
+ * @param index[in] the index of the object in the array
+ *
+ * @return The pointer to the given index.
+ */
+void	*dynarr_get_u(t_dynarr *arr, size_t index);
+
+/**
  * Store an object at a certain index in the array. Growing the array to that
  * size if necessary.
  * 
