@@ -40,7 +40,7 @@ typedef struct s_dynarr {
  * @param[in] init_size The initial size (in objects!) of the internal array
  * @param[in] data_size The size of the data type this array will be used for
  * 
- * @return true if everything went as planned, false if an error occured
+ * @return true if everything went as planned, false if an error occurred
  */
 bool	dynarr_create(t_dynarr *ptr, size_t init_size, const size_t data_size);
 
@@ -57,7 +57,7 @@ void	dynarr_delete(t_dynarr *arr);
  * 
  * @param arr[in/out] the buffer to finalize
  * 
- * @return true if everything went as planned, false if an error occured
+ * @return true if everything went as planned, false if an error occurred
  * 
  * This function will not modify (and not free) the array if an error occurs
  */
@@ -68,10 +68,10 @@ bool	dynarr_finalize(t_dynarr *arr);
  * if necessary
  * 
  * @param arr[in/out] the dynarr to append to
- * @param objs[in] the objects to append to the arary
+ * @param objs[in] the objects to append to the array
  * @param count[in] the amount of objects to be added
  * 
- * @return true if everything went as planned, false if an error occured
+ * @return true if everything went as planned, false if an error occurred
  */
 bool	dynarr_add(t_dynarr *arr, void *objs, size_t count);
 
@@ -93,7 +93,7 @@ void	*dynarr_get(t_dynarr *arr, size_t index);
  * @param index[in] the index where the object will be stored in the array
  * @param obj[in] the object to store
  * 
- * @return true if everything went as planned, false if an error occured 
+ * @return true if everything went as planned, false if an error occurred 
  */
 bool	dynarr_set(t_dynarr *arr, size_t index, void *obj);
 
@@ -103,7 +103,7 @@ bool	dynarr_set(t_dynarr *arr, size_t index, void *obj);
  * @param arr[in/out] the dynarr to grow
  * @param new_size[in] the new size (in objects!) to grow the array to.
  * 
- * @return true if everything went as planned, false if an error occured
+ * @return true if everything went as planned, false if an error occurred
  */
 bool	dynarr_grow(t_dynarr *arr, size_t new_size);
 
