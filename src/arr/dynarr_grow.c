@@ -22,7 +22,7 @@ bool	dynarr_grow(t_dynarr *arr, size_t new_size)
 	if (arr->capacity == new_size)
 		return (true);
 	new_arr = ft_realloc(arr->arr,
-						 arr->length * arr->elem_size,
+			arr->length * arr->elem_size,
 			new_size * arr->elem_size);
 	if (new_arr == NULL)
 		return (false);
