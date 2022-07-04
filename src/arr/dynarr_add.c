@@ -18,14 +18,14 @@
  */
 static size_t	calc_grow_size(t_dynarr *arr, size_t extra)
 {
-	return (extra - (arr->arr_size - arr->arr_idx) + GROW_SIZE);
+	return (extra - (arr->capacity - arr->arr_idx) + GROW_SIZE);
 }
 
 bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
 {
 	if (arr == NULL || objs == NULL)
 		return (false);
-	if (arr->arr_size - arr->arr_idx < count)
+	if (arr->capacity - arr->arr_idx < count)
 		if (dynarr_grow(arr, calc_grow_size(arr, count)) == false)
 			return (false);
 	ft_memcpy(dynarr_get_u(arr, arr->arr_idx), objs, count * arr->elem_size);

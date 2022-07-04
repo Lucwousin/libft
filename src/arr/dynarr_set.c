@@ -17,7 +17,7 @@ bool	dynarr_set(t_dynarr *arr, size_t index, void *obj)
 {
 	if (arr == NULL)
 		return (false);
-	if (index >= arr->arr_size)
+	if (index >= arr->capacity)
 		if (dynarr_grow(arr, index + 1) == false)
 			return (false);
 	ft_memcpy(dynarr_get_u(arr, index), obj, arr->elem_size);

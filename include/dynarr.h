@@ -23,13 +23,13 @@
  * 
  * arr is the internal array
  * elem_size is the size of the data type (sizeof <type>)
- * arr_size is the size (in objects!) of the internal array
+ * capacity is the size (in objects!) of the internal array
  * arr_idx is the next unused index of the internal array
  */
 typedef struct s_dynarr {
 	void			*arr;
 	const size_t	elem_size;
-	size_t			arr_size;
+	size_t			capacity;
 	size_t			arr_idx;
 }	t_dynarr;
 
