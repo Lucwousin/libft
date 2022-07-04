@@ -32,3 +32,8 @@ bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
 	arr->arr_idx += count;
 	return (true);
 }
+
+bool	dynarr_addone(t_dynarr *arr, void *obj)
+{
+	return (dynarr_add(arr, obj, 1));
+}

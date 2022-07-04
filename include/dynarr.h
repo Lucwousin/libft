@@ -76,6 +76,17 @@ bool	dynarr_finalize(t_dynarr *arr);
 bool	dynarr_add(t_dynarr *arr, void *objs, size_t count);
 
 /**
+ * Append a single object to the end of this array. Growing the internal array
+ * if necessary
+ *
+ * @param arr[in/out] the dynarr to append to
+ * @param objs[in] the object to append to the array
+ *
+ * @return true if everything went as planned, false if an error occurred
+ */
+bool	dynarr_addone(t_dynarr *arr, void *obj);
+
+/**
  * Get an object from a certain index in the array.
  * 
  * @param arr[in/out] the dynarr to get the object from
