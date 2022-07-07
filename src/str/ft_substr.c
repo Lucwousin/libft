@@ -12,10 +12,9 @@
 
 #include <libft.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, size_t start, size_t len)
 {
 	char	*string;
-	size_t	startpos;
 	size_t	srclen;
 	size_t	length;
 
@@ -25,17 +24,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start > srclen || len == 0)
 		return (ft_strdup(""));
 	if (srclen - start < len)
-		length = srclen - start;
-	else
-		length = len;
+		len = srclen - start;
 	string = malloc((length + 1) * sizeof(char));
 	if (string == NULL)
 		return (NULL);
-	if (start + len > srclen)
-		startpos = srclen - start;
-	else
-		startpos = len;
-	ft_memcpy(string, s + start, startpos);
-	string[startpos] = '\0';
+	ft_memcpy(string, s + start, len);
+	string[len] = '\0';
 	return (string);
 }
