@@ -13,12 +13,11 @@
 #include <dynarr.h>
 #include <libft.h>
 
-/*
- * Grow by space still needed + GROW_SIZE, so we don't keep reallocating
- */
-static size_t	calc_grow_size(t_dynarr *arr, size_t extra)
+static size_t	get_growth(t_dynarr *arr, size_t count)
 {
-	return (extra - (arr->capacity - arr->length) + GROW_SIZE);
+	if (count > arr->capacity)
+		return (arr->capacity + count);
+	return (arr->capacity * 2);
 }
 
 bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
@@ -26,7 +25,7 @@ bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
 	if (arr == NULL || objs == NULL)
 		return (false);
 	if (arr->capacity - arr->length < count)
-		if (dynarr_grow(arr, calc_grow_size(arr, count)) == false)
+		if (dynarr_grow(arr, get_growth(arr, count)) == false)
 			return (false);
 	ft_memcpy(dynarr_get_u(arr, arr->length), objs, count * arr->elem_size);
 	arr->length += count;
