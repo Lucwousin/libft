@@ -22,12 +22,12 @@ void	*ft_realloc(void *oldptr, size_t oldsize, size_t newsize)
 		return (NULL);
 	if (oldptr != NULL)
 	{
-		if (oldsize < newsize)
-			copy_size = oldsize;
-		else
+		if (oldsize > newsize)
 			copy_size = newsize;
-		ft_memcpy(newptr, oldptr, copy_size);
+		else
+			copy_size = oldsize;
+		ft_memmove(newptr, oldptr, copy_size);
+		free(oldptr);
 	}
-	free(oldptr);
 	return (newptr);
 }
