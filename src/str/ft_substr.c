@@ -16,7 +16,6 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 {
 	char	*string;
 	size_t	srclen;
-	size_t	length;
 
 	if (!s)
 		return (NULL);
@@ -25,7 +24,7 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 		return (ft_strdup(""));
 	if (srclen - start < len)
 		len = srclen - start;
-	string = malloc((length + 1) * sizeof(char));
+	string = malloc((len + 1) * sizeof(char));
 	if (string == NULL)
 		return (NULL);
 	ft_memcpy(string, s + start, len);
