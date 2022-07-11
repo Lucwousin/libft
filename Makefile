@@ -26,6 +26,7 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   str/strcontains.c\
 	   arr/dynarr_create.c			arr/dynarr_delete.c			arr/dynarr_finalize.c		arr/dynarr_grow.c\
 	   arr/dynarr_foreach.c			arr/dynarr_add.c			arr/dynarr_get.c			arr/dynarr_set.c\
+	   arr/dynarr_pop.c\
 	   lst/ft_lstadd_back.c			lst/ft_lstclear.c			lst/ft_lstdelone.c			lst/ft_lstlast.c\
 	   lst/ft_lstnew.c				lst/ft_lstadd_front.c		lst/ft_lstdelelem.c			lst/ft_lstiter.c\
 	   lst/ft_lstmap.c				lst/ft_lstsize.c\

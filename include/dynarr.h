@@ -108,6 +108,26 @@ void	*dynarr_get(t_dynarr *arr, size_t index);
 void	*dynarr_get_u(t_dynarr *arr, size_t index);
 
 /**
+ * Get a pointer to the object in the highest index in the array.
+ * 0
+ * @param arr[in/out] the dynarr to get the object from
+ * 
+ * @return The pointer to the object at the highest index in the array.
+ */
+void	*dynarr_get_top(t_dynarr *arr);
+
+/**
+ * Get a pointer to the last index in the array, and decrease length by one.
+ * The data at this address will get overwritten if something else gets added
+ * to (same index of) the array!
+ * 
+ * @param arr[in/out] the dymarr to pop the object from
+ * 
+ * @return The pointer to the object that was popped, or NULL if length is 0
+ */
+void	*dynarr_pop(t_dynarr *arr);
+
+/**
  * Store an object at a certain index in the array. Growing the array to that
  * length if necessary.
  * 
