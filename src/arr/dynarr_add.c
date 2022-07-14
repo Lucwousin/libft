@@ -20,7 +20,7 @@ static size_t	get_growth(t_dynarr *arr, size_t count)
 	return (arr->capacity * 2);
 }
 
-bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
+bool	dynarr_add(t_dynarr *arr, const void *objs, size_t count)
 {
 	if (arr == NULL || objs == NULL)
 		return (false);
@@ -32,7 +32,7 @@ bool	dynarr_add(t_dynarr *arr, void *objs, size_t count)
 	return (true);
 }
 
-bool	dynarr_addone(t_dynarr *arr, void *obj)
+bool	dynarr_addone(t_dynarr *arr, const void *obj)
 {
 	return (dynarr_add(arr, obj, 1));
 }

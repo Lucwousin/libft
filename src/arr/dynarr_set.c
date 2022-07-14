@@ -13,7 +13,7 @@
 #include <dynarr.h>
 #include <libft.h>
 
-bool	dynarr_set(t_dynarr *arr, size_t index, void *obj)
+bool	dynarr_set(t_dynarr *arr, size_t index, const void *obj)
 {
 	if (arr == NULL)
 		return (false);

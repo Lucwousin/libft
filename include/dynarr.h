@@ -13,8 +13,6 @@
 #ifndef DYNARR_H
 # define DYNARR_H
 
-# define GROW_SIZE 64
-
 # include <stdbool.h>
 # include <stddef.h>
 
@@ -42,7 +40,7 @@ typedef struct s_dynarr {
  * 
  * @return true if everything went as planned, false if an error occurred
  */
-bool	dynarr_create(t_dynarr *ptr, size_t init_size, const size_t data_size);
+bool	dynarr_create(t_dynarr *ptr, size_t init_size, size_t data_size);
 
 /**
  * Frees all resources used in this array (the internal array)
@@ -73,7 +71,7 @@ bool	dynarr_finalize(t_dynarr *arr);
  * 
  * @return true if everything went as planned, false if an error occurred
  */
-bool	dynarr_add(t_dynarr *arr, void *objs, size_t count);
+bool	dynarr_add(t_dynarr *arr, const void *objs, size_t count);
 
 /**
  * Append a single object to the end of this array. Growing the internal array
@@ -84,7 +82,7 @@ bool	dynarr_add(t_dynarr *arr, void *objs, size_t count);
  *
  * @return true if everything went as planned, false if an error occurred
  */
-bool	dynarr_addone(t_dynarr *arr, void *obj);
+bool	dynarr_addone(t_dynarr *arr, const void *obj);
 
 /**
  * Get an object from a certain index in the array.
@@ -137,7 +135,7 @@ void	*dynarr_pop(t_dynarr *arr);
  * 
  * @return true if everything went as planned, false if an error occurred 
  */
-bool	dynarr_set(t_dynarr *arr, size_t index, void *obj);
+bool	dynarr_set(t_dynarr *arr, size_t index, const void *obj);
 
 /**
  * Grow (or shrink) the internal array
