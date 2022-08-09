@@ -16,6 +16,8 @@
 # include <stdbool.h>
 # include <stddef.h>
 
+typedef void	(*t_foreach)(void *, void *);
+
 /**
  * A dynamic (growable) array, usable for all types
  * 
