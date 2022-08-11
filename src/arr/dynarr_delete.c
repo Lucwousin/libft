@@ -17,4 +17,5 @@ void	dynarr_delete(t_dynarr *arr)
 {
 	if (arr != NULL)
 		free(arr->arr);
+	arr->arr = NULL;
 }
