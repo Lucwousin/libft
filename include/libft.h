@@ -28,10 +28,11 @@ int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 
-// String<->Integer
+// String<->Anything
 int				ft_atoi(const char *str);
 unsigned int	ft_hextoui(const char *str);
 char			*ft_itoa(int n);
+float			ft_strtof(const char *str, char **end);
 
 // String manipulation functions
 size_t			ft_strlen(const char *str);
