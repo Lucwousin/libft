@@ -33,7 +33,7 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   put/ft_putchar_fd.c			put/ft_putendl_fd.c			put/ft_putnbr_fd.c			put/ft_putstr_fd.c\
 	   ascii/ft_isalnum.c			ascii/ft_isalpha.c			ascii/ft_isascii.c			ascii/ft_isdigit.c\
 	   ascii/ft_isprint.c			ascii/ft_tolower.c			ascii/ft_toupper.c\
-	   conversion/ft_atoi.c			conversion/ft_hextoui.c		conversion/ft_itoa.c\
+	   conversion/ft_atoi.c			conversion/ft_hextoui.c		conversion/ft_itoa.c		conversion/ft_strtof.c\
 	   math/ft_interpolate.c		math/ft_simple_math.c\
 	   printf/ft_printf.c			printf/nbr_to_str_utils.c	printf/parse_flags.c		printf/parse_options.c\
 	   printf/printf_printchar.c	printf/printf_printhex.c	printf/printf_printnbr.c	printf/printf_printstr.c\
