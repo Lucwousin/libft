@@ -55,9 +55,9 @@ static void	get_indices(const char *str, int32_t data[3], char **end)
 	data[EXP_LEN] = data[DEC_IDX] - num_len;
 }
 
-static void
-	get_num_parts(const char *str, int32_t data[3], int32_t num_parts[2])
+static float	get_value(const char *str, int32_t data[3])
 {
+	int32_t	num_parts[2];
 	char	c;
 
 	num_parts[0] = 0;
@@ -78,14 +78,14 @@ static void
 		num_parts[1] = 10 * num_parts[1] + (c - '0');
 		--data[NUM_LEN];
 	}
+	return ((1.0e9f * (float) num_parts[0]) + (float) num_parts[1]);
 }
 
-static float	to_float(int32_t data[3], const int32_t num_parts[2])
+static float	to_float(int32_t data[3], float result)
 {
 	const float	*pow = g_ten_pows;
 	const bool	exp_neg = data[EXP_LEN] < 0;
 	float		true_exp;
-	float		result;
 
 	true_exp = 1.0f;
 	if (exp_neg)
@@ -97,7 +97,6 @@ static float	to_float(int32_t data[3], const int32_t num_parts[2])
 		data[EXP_LEN] >>= 1;
 		++pow;
 	}
-	result = (1.0e9f * (float) num_parts[0]) + (float) num_parts[1];
 	if (exp_neg)
 		result /= true_exp;
 	else
@@ -110,7 +109,7 @@ float	ft_strtof(const char *str, char **end)
 {
 	bool	negative;
 	int32_t	data[3];
-	int32_t	num_parts[2];
+	float	result;
 
 	while (*str && ft_strchr(WHITESPACE, *str) != NULL)
 		++str;
@@ -120,9 +119,10 @@ float	ft_strtof(const char *str, char **end)
 	get_indices(str, data, end);
 	if (data[NUM_LEN] == 0)
 		return (0.0f);
-	get_num_parts(str, data, num_parts);
+	result = get_value(str, data);
+	result = to_float(data, result);
 	if (negative)
-		return (-to_float(data, num_parts));
+		return (-result);
 	else
-		return (to_float(data, num_parts));
+		return (result);
 }
