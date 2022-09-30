@@ -12,33 +12,38 @@
 
 #include <sort.h>
 
-static void	*tri_median(t_sort *sort, size_t low, size_t high)
+static size_t	tri_median(t_sort *sort, size_t low, size_t high)
 {
-	uint32_t	mid;
+	size_t	mid;
 
 	mid = (low + high) / 2;
-	if (cmp(sort, get(sort, low), get(sort, mid)))
+	if (cmp(sort, mid, low) < 0)
 		swap(sort, mid, low);
-	if (cmp(sort, get(sort, low), get(sort, high)))
-		swap(sort, high, low);
-	if (cmp(sort, get(sort, mid), get(sort, high)))
-		swap(sort, mid, high);
-	return (get(sort, mid));
+	if (cmp(sort, high, mid) < 0)
+		swap(sort, high, mid);
+	if (cmp(sort, mid, low) < 0)
+		swap(sort, mid, low);
+	return (mid);
 }
 
 static size_t	partition(t_sort *sort, size_t low, size_t high)
 {
-	void	*pivot;
+	size_t	pivot;
 
 	pivot = tri_median(sort, low, high);
-	while (low < high)
+	while (low <= high)
 	{
-		while (!cmp(sort, get(sort, low), pivot))
+		while (cmp(sort, low, pivot) < 0)
 			++low;
-		while (cmp(sort, get(sort, high), pivot))
+		while (cmp(sort, pivot, high) < 0)
 			--high;
-		if (low < high)
-			swap(sort, low, high);
+		if (low == high)
+			return (low + 1);
+		swap(sort, low, high);
+		if (pivot == low)
+			pivot = high;
+		else if (pivot == high)
+			pivot = low;
 	}
 	return (low);
 }
@@ -50,10 +55,9 @@ void	squicksort(t_sort *sort, size_t low, size_t high)
 	if (low >= high)
 		return ;
 	if (high - low < INSERTION_SORT_CUTOFF)
-		return (sinssort(sort, low, high));
+		return (sinssort(sort, low, high + 1));
 	partition_idx = partition(sort, low, high);
-	if (partition_idx != 0)
+	if (partition_idx > 0)
 		squicksort(sort, low, partition_idx - 1);
-	if (partition_idx != high)
-		squicksort(sort, partition_idx + 1, high);
+	squicksort(sort, partition_idx, high);
 }

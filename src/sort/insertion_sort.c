@@ -36,18 +36,16 @@ void	sinssort(t_sort *sort, size_t low, size_t high)
 {
 	size_t	i;
 	size_t	j;
-	void	*v;
 
 	i = low + 1;
 	while (i < high)
 	{
-		v = get(sort, low);
 		j = i;
-		while (j-- > low && cmp(sort, get(sort, j), v))
+		while (j > low && cmp(sort, j - 1, j) > 0)
 		{
-			swap(sort, j + 1, j);
+			swap(sort, j - 1, j);
+			--j;
 		}
-		set(sort, j + 1, v);
 		++i;
 	}
 }

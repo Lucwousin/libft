@@ -59,7 +59,7 @@ void	quicksort(int32_t *arr, uint32_t low, uint32_t high)
 	if (low >= high)
 		return ;
 	if (high - low < INSERTION_SORT_CUTOFF)
-		return (inssort(arr, low, high));
+		return (inssort(arr, low, high + 1));
 	partition_index = partition(arr, low, high);
 	if (partition_index != 0)
 		quicksort(arr, low, partition_index - 1);

@@ -19,17 +19,12 @@
 
 # define INSERTION_SORT_CUTOFF	10
 
-typedef void	*(*t_get)(void *objs, size_t idx);
-typedef void	(*t_set)(void *objs, size_t idx, void *val);
-typedef bool	(*t_cmp)(void *a, void *b);
-typedef void	(*t_swap)(void *objs, size_t idx_a, size_t idx_b);
+typedef int8_t	(*t_cmp)(void *a, void *b);
 
 typedef struct s_sort_data {
-	void	*objs;
-	t_get	get;
-	t_set	set;
+	void	*arr;
+	size_t	data_size;
 	t_cmp	cmp;
-	t_swap	swap;
 }	t_sort;
 
 void	quicksort(int32_t *arr, uint32_t low, uint32_t high);
@@ -38,24 +33,29 @@ void	squicksort(t_sort *sort, size_t low, size_t high);
 void	inssort(int32_t *arr, uint32_t low, uint32_t high);
 void	sinssort(t_sort *sort, size_t low, size_t high);
 
-static inline void	*get(t_sort *s, size_t i)
+static inline void	swap(t_sort *s, size_t a, size_t b)
 {
-	return (s->get(s->objs, i));
+	size_t	n;
+	uint8_t	*pa;
+	uint8_t	*pb;
+	uint8_t	tmp;
+
+	n = s->data_size;
+	pa = s->arr + a * n;
+	pb = s->arr + b * n;
+	while (n--)
+	{
+		tmp = *pa;
+		*pa++ = *pb;
+		*pb++ = tmp;
+	}
 }
 
-static inline void	set(t_sort *s, size_t i, void *v)
+static inline int8_t	cmp(t_sort *s, size_t a, size_t b)
 {
-	return (s->set(s->objs, i, v));
-}
-
-static inline bool	cmp(t_sort *s, void *a, void *b)
-{
-	return (s->cmp(a, b));
-}
-
-static inline void	swap(t_sort *s, size_t i, size_t j)
-{
-	return (s->swap(s->objs, i, j));
+	a *= s->data_size;
+	b *= s->data_size;
+	return (s->cmp(s->arr + a, s->arr + b));
 }
 
 #endif
