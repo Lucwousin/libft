@@ -40,7 +40,7 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   printf/printf_utils.c\
 	   get_next_line.c\
 	   binary_search.c\
-	   quicksort.c
+	   sort/quicksort.c				sort/squicksort.c			sort/insertion_sort.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
@@ -48,7 +48,7 @@ OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h $(INC_DIR)dynarr.h
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h $(INC_DIR)dynarr.h $(INC_DIR)sort.h
 	@mkdir -p $(@D)
 	@echo "Compiling: $<"
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c -o $@ $<

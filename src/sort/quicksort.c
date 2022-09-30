@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
+#include <sort.h>
 
-static void	swap(int32_t *a, int32_t *b)
+static void	swapi(int32_t *a, int32_t *b)
 {
 	int32_t	tmp;
 
@@ -27,11 +27,11 @@ static int32_t	tri_median(int32_t *arr, uint32_t low, uint32_t high)
 
 	mid = (low + high) / 2;
 	if (arr[mid] < arr[low])
-		swap(arr + mid, arr + low);
+		swapi(arr + mid, arr + low);
 	if (arr[high] < arr[low])
-		swap(arr + high, arr + low);
+		swapi(arr + high, arr + low);
 	if (arr[high] < arr[mid])
-		swap(arr + mid, arr + high);
+		swapi(arr + mid, arr + high);
 	return (arr[mid]);
 }
 
@@ -47,7 +47,7 @@ static uint32_t	partition(int32_t *arr, uint32_t low, uint32_t high)
 		while (arr[high] > pivot)
 			--high;
 		if (low < high)
-			swap(arr + low, arr + high);
+			swapi(arr + low, arr + high);
 	}
 	return (low);
 }
@@ -58,6 +58,8 @@ void	quicksort(int32_t *arr, uint32_t low, uint32_t high)
 
 	if (low >= high)
 		return ;
+	if (high - low < INSERTION_SORT_CUTOFF)
+		return (inssort(arr, low, high));
 	partition_index = partition(arr, low, high);
 	if (partition_index != 0)
 		quicksort(arr, low, partition_index - 1);
