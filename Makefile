@@ -40,7 +40,8 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   printf/printf_utils.c\
 	   get_next_line.c\
 	   binary_search.c\
-	   sort/quicksort.c				sort/squicksort.c			sort/insertion_sort.c
+	   sort/quicksort.c				sort/squicksort.c			sort/insertion_sort.c									\
+	   kdtree/kd*.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
