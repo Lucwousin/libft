@@ -19,12 +19,13 @@
 
 # define INSERTION_SORT_CUTOFF	10
 
-typedef int8_t	(*t_cmp)(void *a, void *b);
+typedef int	(*t_cmp)(void *a, void *b, void *arg);
 
 typedef struct s_sort_data {
 	void	*arr;
 	size_t	data_size;
 	t_cmp	cmp;
+	void	*arg;
 }	t_sort;
 
 void	quicksort(int32_t *arr, uint32_t low, uint32_t high);
@@ -51,11 +52,11 @@ static inline void	swap(t_sort *s, size_t a, size_t b)
 	}
 }
 
-static inline int8_t	cmp(t_sort *s, size_t a, size_t b)
+static inline int	cmp(t_sort *s, size_t a, size_t b)
 {
 	a *= s->data_size;
 	b *= s->data_size;
-	return (s->cmp(s->arr + a, s->arr + b));
+	return (s->cmp(s->arr + a, s->arr + b, s->arg));
 }
 
 #endif
