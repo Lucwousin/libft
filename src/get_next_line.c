@@ -12,11 +12,17 @@
 
 #include <get_next_line.h>
 #include <unistd.h>
+#include <dynarr.h>
+#include <libft.h>
+
+#define ERROR		0
+#define DONE		1
+#define CONTINUE	2
 
 static t_list	*find_or_create_list(t_list **list, int fd)
 {
 	t_list		*cur;
-	t_content	*content;
+	t_filebuf	*content;
 
 	cur = *list;
 	while (cur)
@@ -26,17 +32,36 @@ static t_list	*find_or_create_list(t_list **list, int fd)
 			return (cur);
 		cur = cur->next;
 	}
-	content = malloc(sizeof(t_content));
-	if (!content)
-		return (NULL);
-	content->leftover = NULL;
-	content->fd = fd;
-	cur = ft_lstnew(content);
+	cur = malloc(sizeof(t_list) + sizeof(t_filebuf));
 	if (!cur)
-		free(content);
-	else
-		ft_lstadd_front(list, cur);
+		return (NULL);
+	cur->content = cur + 1;
+	content = cur->content;
+	*content = (t_filebuf){fd, {}, 0, 0};
+	ft_lstadd_front(list, cur);
 	return (cur);
+}
+
+static int	add_til_newline(t_filebuf *buf, t_dynarr *linebuf)
+{
+	const char	*bufstart = buf->buf + buf->start;
+	const char	*nl = ft_memchr(bufstart, '\n', buf->len);
+	size_t		len;
+
+	if (nl == NULL)
+		len = buf->len;
+	else
+		len = nl - bufstart + 1;
+	if (!dynarr_add(linebuf, bufstart, len))
+		return (ERROR);
+	buf->len -= len;
+	buf->start += len;
+	if (buf->len == 0)
+		buf->start = 0;
+	if (nl != NULL)
+		return (DONE);
+	else
+		return (CONTINUE);
 }
 
 /**
@@ -45,111 +70,45 @@ static t_list	*find_or_create_list(t_list **list, int fd)
  *
  * Returns NULL if anything went wrong
  */
-static char	*read_until_newline(int fd, char *leftover)
+static int	read_until_newline(int fd, t_filebuf *buf, t_dynarr *linebuf)
 {
-	char	*buffer;
-	char	*tmp;
 	ssize_t	read_bytes;
+	int		result;
 
-	if (leftover && ft_strchr(leftover, '\n'))
-		return (leftover);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	buffer[0] = '\0';
-	while (!ft_strchr(buffer, '\n'))
+	while (true)
 	{
-		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (read_bytes <= 0)
-			break ;
-		buffer[read_bytes] = '\0';
-		tmp = leftover;
-		leftover = ft_strjoin(tmp, buffer);
-		free(tmp);
-		if (!leftover)
-			break ;
+		if (buf->len != 0)
+		{
+			result = add_til_newline(buf, linebuf);
+			if (result != CONTINUE)
+				return (result);
+		}
+		read_bytes = read(fd, buf->buf, BUFFER_SIZE);
+		if (read_bytes < 0)
+			return (ERROR);
+		if (read_bytes == 0)
+			return (DONE);
+		buf->len = read_bytes;
 	}
-	free(buffer);
-	return (leftover);
-}
-
-/**
- * Return everything in leftover up to (and including) the first newline
- * If there is no newline, returns leftover and sets leftover_p to NULL
- * If there is a newline, allocate a new string and copy everything.
- */
-static char	*get_line(char **leftover_p, char *leftover)
-{
-	char	*line;
-	char	*newline_idx;
-	size_t	len;
-
-	newline_idx = ft_strchr(leftover, '\n');
-	if (!newline_idx)
-	{
-		line = leftover;
-		*leftover_p = NULL;
-		return (line);
-	}
-	len = newline_idx - leftover + 1 + 1;
-	line = malloc(len * sizeof(char));
-	if (!line)
-	{
-		free(leftover);
-		*leftover_p = NULL;
-		return (NULL);
-	}
-	ft_memcpy(line, leftover, len - 1);
-	line[len - 1] = '\0';
-	return (line);
-}
-
-/**
- * Get everything after the first '\n' and put it in a new string.
- * Always frees leftover
- * If the newline was the last character in the string, return NULL
- */
-static char	*get_leftover(char *leftover)
-{
-	char	*str;
-	char	*newline_idx;
-	size_t	len;
-	size_t	n;
-
-	len = ft_strlen(leftover);
-	newline_idx = ft_strchr(leftover, '\n');
-	n = len - (newline_idx - leftover);
-	if (n != 1)
-		str = malloc(n * sizeof(char));
-	else
-		str = NULL;
-	if (str)
-		ft_memcpy(str, newline_idx + 1, n);
-	free(leftover);
-	return (str);
 }
 
 char	*get_next_line(int fd)
 {
 	static t_list	*list = NULL;
 	t_list			*cur;
-	t_content		*content;
-	char			*line;
+	int				result;
+	t_dynarr		linebuf;
 
-	if (fd < 0)
+	if (fd < 0 || !dynarr_create(&linebuf, 128, sizeof(char)))
 		return (NULL);
 	cur = find_or_create_list(&list, fd);
 	if (!cur)
 		return (NULL);
-	content = cur->content;
-	content->leftover = read_until_newline(fd, content->leftover);
-	if (content->leftover != NULL)
-		line = get_line(&content->leftover, content->leftover);
-	else
-		line = NULL;
-	if (content->leftover != NULL)
-		content->leftover = get_leftover(content->leftover);
-	if (content->leftover == NULL)
-		ft_lstdelelem(&list, cur, &free);
-	return (line);
+	result = read_until_newline(fd, cur->content, &linebuf);
+	if (result == ERROR || ((t_filebuf *) cur->content)->len == 0)
+		ft_lstdelelem(&list, cur, NULL);
+	if (result != ERROR && linebuf.length != 0)
+		if (dynarr_addone(&linebuf, "\0") && dynarr_finalize(&linebuf))
+			return (linebuf.arr);
+	return (dynarr_delete(&linebuf), NULL);
 }

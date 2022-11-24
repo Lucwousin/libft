@@ -46,7 +46,7 @@ OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 
 CC = gcc
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -march=native -O3 -Wall -Werror -Wextra
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h $(INC_DIR)dynarr.h $(INC_DIR)sort.h
 	@mkdir -p $(@D)

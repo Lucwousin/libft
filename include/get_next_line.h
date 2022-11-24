@@ -14,17 +14,17 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 0x100000
 # endif
 
-# include <libft.h>
 # include <stdlib.h>
 
-typedef struct s_content
-{
+typedef struct s_filebuf {
 	int		fd;
-	char	*leftover;
-}			t_content;
+	char	buf[BUFFER_SIZE];
+	size_t	start;
+	size_t	len;
+}	t_filebuf;
 
 char	*get_next_line(int fd);
 
