@@ -19,6 +19,14 @@
 
 # include <stdlib.h>
 
+typedef enum e_gnl_status {
+	GNL_CONTINUE,
+	GNL_DONE,
+	GNL_FINISHED,
+	GNL_ERROR,
+	GNL_ERROR_FILE
+}	t_gnl_err;
+
 typedef struct s_filebuf {
 	int		fd;
 	char	buf[BUFFER_SIZE];
@@ -26,6 +34,13 @@ typedef struct s_filebuf {
 	size_t	len;
 }	t_filebuf;
 
-char	*get_next_line(int fd);
+size_t	get_next_line(int fd, char **dst);
+char	*get_next_line_dumb(int fd);
+
+static inline
+void	cleanup_gnl(void)
+{
+	get_next_line(-1, NULL);
+}
 
 #endif

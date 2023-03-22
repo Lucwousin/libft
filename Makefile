@@ -38,7 +38,7 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   printf/ft_printf.c			printf/nbr_to_str_utils.c	printf/parse_flags.c		printf/parse_options.c\
 	   printf/printf_printchar.c	printf/printf_printhex.c	printf/printf_printnbr.c	printf/printf_printstr.c\
 	   printf/printf_utils.c\
-	   get_next_line.c\
+	   gnl/get_next_line.c			gnl/get_next_line_utils.c\
 	   binary_search.c\
 	   sort/quicksort.c				sort/squicksort.c			sort/insertion_sort.c
 
