@@ -42,22 +42,27 @@ SRCS = mem/ft_bzero.c				mem/ft_calloc.c				mem/ft_free_mult.c			mem/ft_memchr.c
 	   binary_search.c\
 	   sort/quicksort.c				sort/squicksort.c			sort/insertion_sort.c
 
+HEADERS = include/libft.h			\
+		  include/get_next_line.h	\
+ 		  include/ft_printf.h		include/ft_printf_internal.h	\
+ 		  include/dynarr.h			include/sort.h
+
 OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 
 CC = gcc
 CFLAGS = -march=native -O3 -Wall -Werror -Wextra
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(INC_DIR)libft.h $(INC_DIR)get_next_line.h $(INC_DIR)dynarr.h $(INC_DIR)sort.h
+all: $(NAME)
+
+$(NAME): $(OBJS_PREFIXED)
+	@ar rc $(NAME) $?
+	@echo "Done creating archive $(NAME)"
+
+$(OBJS_PREFIXED): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS)
 	@mkdir -p $(@D)
 	@echo "Compiling: $<"
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c -o $@ $<
-
-$(NAME): $(OBJS_PREFIXED)
-	@ar -cr $(NAME) $(OBJS_PREFIXED)
-	@echo "Done creating archive $(CURDIR)/$(NAME)"
-
-all: $(NAME)
 
 clean:
 	@rm -rf $(OBJ_DIR)
