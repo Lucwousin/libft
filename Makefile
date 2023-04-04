@@ -51,12 +51,15 @@ OBJS = $(SRCS:.c=.o)
 OBJS_PREFIXED = $(addprefix $(OBJ_DIR), $(OBJS))
 
 CC = gcc
-CFLAGS = -march=native -O3 -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra $(OFLAGS)
+ifdef DEBUG
+	CFLAGS += -g
+endif
 
 all: $(NAME)
 
 $(NAME): $(OBJS_PREFIXED)
-	@ar rc $(NAME) $?
+	@gcc-ar rc $(NAME) $?
 	@echo "Done creating archive $(NAME)"
 
 $(OBJS_PREFIXED): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS)
