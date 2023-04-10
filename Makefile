@@ -56,10 +56,16 @@ ifdef DEBUG
 	CFLAGS += -g
 endif
 
+ifeq ($(shell uname -s), Darwin)
+	AR=ar
+else
+	AR=gcc-ar
+endif
+
 all: $(NAME)
 
 $(NAME): $(OBJS_PREFIXED)
-	@gcc-ar rc $(NAME) $?
+	@$(AR) rc $(NAME) $?
 	@echo "Done creating archive $(NAME)"
 
 $(OBJS_PREFIXED): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS)
